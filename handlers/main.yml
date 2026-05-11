@@ -1,0 +1,14 @@
+# code: language=ansible
+# vim: set filetype=yaml.ansible :
+---
+- name: enable dumbproxy
+  ansible.builtin.systemd:
+    name: dumbproxy
+    daemon_reload: true
+    enabled: true
+
+- name: restart dumbproxy
+  ansible.builtin.systemd:
+    name: dumbproxy
+    daemon_reload: true
+    state: restarted

@@ -1,0 +1,18 @@
+# code: language=ansible
+# vim: set filetype=yaml.ansible :
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    - name: "get dumbproxy service status" # noqa: command-instead-of-module
+      ansible.builtin.command:
+        cmd: systemctl is-active dumbproxy
+      changed_when: false
+      register: dumbproxy_result
+
+    - name: "it should be running"
+      ansible.builtin.assert:
+        that:
+          - dumbproxy_result.rc == 0

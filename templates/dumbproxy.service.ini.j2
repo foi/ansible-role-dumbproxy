@@ -1,0 +1,26 @@
+[Unit]
+Description=dumbproxy
+Documentation=https://github.com/SenseUnit/dumbproxy
+{% if dumbproxy_unit_options is defined and dumbproxy_unit_options.items() | length > 0 %}
+{% for k, v in dumbproxy_unit_options.items() %}
+{{ k }}={{ v }}
+{% endfor %}
+{% else %}
+{% for k, v in dumbproxy_default_unit_options.items() %}
+{{ k }}={{ v }}
+{% endfor %}
+{% endif %}
+
+[Service]
+{% if dumbproxy_service_options is defined and dumbproxy_service_options.items() | length > 0 %}
+{% for k, v in dumbproxy_service_options.items() %}
+{{ k }}={{ v }}
+{% endfor %}
+{% else %}
+{% for k, v in dumbproxy_default_service_options.items() %}
+{{ k }}={{ v }}
+{% endfor %}
+{% endif %}
+
+[Install]
+WantedBy=default.target

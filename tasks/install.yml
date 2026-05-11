@@ -1,0 +1,24 @@
+# code: language=ansible
+# vim: set filetype=yaml.ansible :
+---
+- name: download dumbproxy to tmp dir
+  ansible.builtin.uri:
+    url: "{{ dumbproxy_download_url }}"
+    dest: "/tmp/dumbproxy_{{ dumbproxy_version }}"
+    mode: '0755'
+    method: GET
+    follow_redirects: true
+    status_code:
+      - 200
+      - 304
+    creates: "/tmp/dumbproxy_{{ dumbproxy_version }}"
+
+- name: "copy dumbproxy binary to {{ dumbproxy_binary_path }}"
+  ansible.builtin.copy:
+    src: "/tmp/dumbproxy_{{ dumbproxy_version }}"
+    dest: "{{ dumbproxy_binary_path }}/dumbproxy"
+    mode: '0755'
+    remote_src: true
+  notify:
+    - restart dumbproxy
+    - enable dumbproxy

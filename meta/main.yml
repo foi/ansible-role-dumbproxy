@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  role_name: dumbproxy
+  author: foi
+  description: dumbproxy systemd ansible role
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+
+  license: MIT
+
+  min_ansible_version: "2.16"
+
+  galaxy_tags:
+    - proxy-server
+    - dumbproxy
+    - socks5-server
+    - dpi-bypassing
+    - proxy
+
+dependencies: []

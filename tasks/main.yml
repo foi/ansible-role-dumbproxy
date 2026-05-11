@@ -1,0 +1,15 @@
+# code: language=ansible
+# vim: set filetype=yaml.ansible :
+---
+- name: install
+  ansible.builtin.import_tasks:
+    file: install.yml
+  tags:
+    - dumbproxy-install
+
+- name: configure
+  ansible.builtin.import_tasks:
+    file: configure.yml
+  tags:
+    - dumbproxy-configure
+    - dumbproxy-install
