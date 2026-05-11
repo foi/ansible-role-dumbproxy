@@ -1,6 +1,6 @@
 # ansible-role-dumbproxy
 
-ansible role for dumbproxy - https://github.com/mullvad/dumbproxy.
+ansible role for dumbproxy - https://github.com/SenseUnit/dumbproxy.
 
 <img src="https://github.com/foi/ansible-role-dumbproxy/actions/workflows/ci.yml/badge.svg?branch=main">
 
